@@ -1,25 +1,21 @@
-name: CI
+name: AndroidBuild
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name: Set up Java
-        uses: actions/setup-java@v3.14.0  # Updated to a version compatible with Node.js 20
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      # Add other steps as necessary
